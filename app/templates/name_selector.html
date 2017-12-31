@@ -1,0 +1,71 @@
+<!-- name_selector.html -->
+
+<div class="">
+  <div id="tab-1" class="control tab-content Xcurrent">
+  {% for dic_artist_id, dic in artists.items() %}
+  
+    <p>
+      <h1 class="title is-5 is-grey">
+        <label class="radio">
+        <input type="radio" class="artist_filter" name="artist_filter" value="{{ dic_artist_id }}" 
+  
+          {% if dic_artist_id == artist_id %}
+               checked
+          {% endif %}
+        > 
+        &nbsp; {{ dic["fields"]["Name"] }}
+        </label>
+      </h1>
+    </p>
+  
+  {% endfor %}
+  </div>
+ 
+
+  <div id="tab-2" class="tab-content ">
+    <form id="genre_form" action="/" method="post">
+      <p class="is-size-7 has-text-info has-text-weight-semibold  ">
+          FILTER ARTISTS BY GENRE:
+      </p>
+  
+      {% for genre in genres %}
+    
+      <p>
+        <h1 class="title is-5 is-grey">
+          <label class="radio">
+          <input type="radio" class="genre_filter" name="genre_filter" value="{{ genre }}" > 
+          &nbsp; {{ genre }}
+          </label>
+        </h1>
+      </p>
+    
+      {% endfor %}
+    </form>
+  </div>
+ 
+
+  <div id="tab-3" class="tab-content ">
+    <form id="collection_form" action="/" method="post">
+    <p class="is-size-7 has-text-info has-text-weight-semibold  ">
+        FILTER ARTISTS BY COLLECTION:
+        <br>
+    </p>
+
+    {% for id, Name in collections.items() %}
+
+  
+    <p>
+      <h1 class="title is-5 is-grey">
+        <label class="radio">
+        <input type="radio" class="collection_filter" name="collection_filter" value="{{ id }}" > 
+        &nbsp; {{ Name }}
+        </label>
+      </h1>
+    </p>
+  
+    {% endfor %}
+    </form>
+  </div>
+</div>
+
+<!-- END name_selector.html -->

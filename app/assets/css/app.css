@@ -1,0 +1,53 @@
+/* airtable/gallery/app/assets/css/app.css */
+/* Extensions to bulma */
+
+.color-hero{
+  background: #E52E4D;  /* airtable red */
+  color: #ffffff;   /* */
+}
+.color-two {
+  background: #BFE9F6;  /* airtable blue */
+  color: #3273dc;
+}
+.is-grey {
+  color: #777777;   /* grey */
+}
+.is-white {
+  color: #eeeeee;   /* white */
+}
+.title{
+  color: #a07777;  /* red grey heads*/
+}
+.padder{
+  padding-top:  2rem;
+  padding-bottom: 2rem;
+}
+.artist-title{
+  font-size: 48px;
+}
+.indent10{
+  padding-left: 1rem;
+}
+
+.footer{
+  /* make it thinner */
+  padding-top: 1rem;
+  padding-right: 1.5rem;
+  padding-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+/* Buttons */
+#refresh{
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+#refresh:hover{
+  background: navy;
+}
+.underline{
+  text-decoration: underline;
+}
+

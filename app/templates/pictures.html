@@ -1,0 +1,22 @@
+<!-- pictures.html -->
+<div>
+  <p class="is-size-7 has-text-info has-text-weight-semibold  ">
+        S A M P L E &nbsp; W O R K
+  </p>
+
+  <div class="indent10">
+    {% for dic in pic_urls %}
+      <span>
+          <img class="thumb" id="{{ dic.id }}" src="{{ dic.pic }}" style="height:60px">
+      </span> 
+    {% endfor %}
+  </div>
+
+  <div>
+    <image class="">
+      <img id="picture" src="{{ pic_urls[0]["pic"] }}" height="512px">
+    </image>
+  </div>
+</div>
+<!-- END pictures.html -->
+

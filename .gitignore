@@ -1,0 +1,12 @@
+
+# Created at runtime
+app.log
+Collections.pickle
+Artists.pickle
+
+__pycache__
+.cache
+
+__*
+
+

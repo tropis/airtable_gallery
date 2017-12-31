@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      {{ data.app_name }}
+    </title>
+    <!-- link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
+    <link rel="stylesheet" href="/assets/css/app.css">
+    <link rel="icon" type="image/png" href="/assets/img/gallery.png">
+  </head>
+
+  <body>
+  <nav class="navbar is-transparent">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      <img src="/assets/img/gallery.png" 
+       alt="Artists" 
+      width="64" height="28">
+    </a>
+    <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <div id="navbarExampleTransparentExample" class="navbar-menu">
+    <div class="navbar-start">
+    </div>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <a class="navbar-item is-grey" href="/">
+        Home
+        </a>
+        <a class="navbar-item is-grey" href="#about">
+        About
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<section class="hero  color-hero  ">
+  <div class="hero-body">
+    <div class="container">
+        <h1 class="title is-2">
+            <span class="is-white">
+              {{ data.app_name }}
+            </span>
+      </h1>
+      <h2 class="subtitle is-white">
+        {{ data.app_motto }}
+      </h2>
+    </div>
+  </div>
+
+  <div class="hero-foot">
+    <div class="container">
+      <div class="tabs is-boxed">
+        <ul class="art-tabs">
+          <li class="tab-link {{ data.is_all_filter }}" data-tab="tab-1"><a href="/">All Artists</a></li>
+          <li class="tab-link {{ data.is_genre_filter }}" data-tab="tab-2" ><a>by Genre</a></li>
+          <li class="tab-link {{ data.is_collection_filter }}"  data-tab="tab-3" ><a>by Collection</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--  Body -->
+
+<div class="columns">
+  <div class="column is-1"></div>
+  <div class="column is-3 padder">
+
+<!--  Body Left Column -->
+
+  {% autoescape false %}
+  {{ data.name_selector }}
+  {% endautoescape %}
+
+  </div>
+
+  <div class="column is-2 padder ">
+    {% if session.get("genre_filter", "") != "" %}
+      <p class="is-size-7 has-text-info has-text-weight-semibold  ">
+        GENRE:
+      </p>
+      <h1 class="title is-5 is-grey ">
+        {{ session["genre_filter"] }}
+      </h1>
+    {% elif session.get("collection_filter", "") != "" %}
+      <p class="is-size-7 has-text-info has-text-weight-semibold  ">
+        COLLECTION:
+      </p>
+      <h1 class="title is-5 is-grey ">
+        {{ data["collection_name"] }}
+      </h1>
+    {% endif %}
+  </div>
+
+  <div class="column is-5 padder ">
+
+<!--  Body Right Column -->
+
+    <h1 class="title">
+      <span class=" artist-title">
+          {{ data.artist_name }}
+      </span>
+    </h1>
+    <p class="is-size-7 has-text-info has-text-weight-semibold  ">
+        G E N R E S
+    </p>
+    <h1 class="title is-4 ">
+        <div class="indent10">
+        {% for genre in data.artist_genres %}
+            <p class=" is-grey">
+              {{ genre }}
+            </p>
+        {% endfor  %}
+        </div>
+    </h1>
+
+
+    <div class="content">
+      {% autoescape false %}
+      {{ data.pictures }}
+      {% endautoescape %}
+    </div /* content */ >
+
+
+      <div class="box">
+        <article class="media">
+          <div class="media-content">
+            <h1 class="title is-4">
+                  Bibliography
+            </h1>
+
+            <div class="content">
+              <p>
+              {{ data.bio }}
+              </p>
+            </div /* content */ >
+          </div>
+        </article>
+      </div /* box */ >
+
+
+  </div /* column */ >
+  <div class="column is-1"></div>
+</div>
+
+
+<footer class="footer color-two">
+  <form name="footer_form" action="/refresh" method="post">
+  <a name="about">
+  <div class="container">
+
+        <div class="buttons has-addons">
+
+       <span>Settings: &nbsp;&nbsp;&nbsp;</span>
+
+       <span id="live" class="button is-small {{ data.live_classes }} ">
+        Airtable Live &nbsp; 
+            <input type="radio" name="live_cached" value="live" {{ data.live_checked }} >
+          </span>
+        
+          <span id="cached" class="button is-small {{ data.cached_classes }} ">
+            <input type="radio" name="live_cached" value="cached" {{ data.cached_checked }} >
+            &nbsp; 
+            Airtable Cached 
+          </span>
+          &nbsp;&nbsp;
+          <span><button id="refresh" class="button is-small is-info">Refresh Cache</button></span>
+        </div> 
+
+        <div class="content ">
+          Data source:&nbsp;&nbsp;
+          <a class="underline" href="https://airtable.com/templates/creative/expAZgezgpfCF8wVH/art-gallery">Airtable Art Gallery template</a>
+          <br>
+
+          Design:&nbsp;&nbsp;
+              <a class="underline" href="http:/www.philhardaker.com">philhardaker.com</a>
+
+        </div>
+     </div>
+
+  </div>
+  </form>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script> 
+<script>
+
+$(function() {
+    // Handler for .ready()
+
+    // Hide tab content
+    $("#tab-2").hide();
+    $("#tab-3").hide();
+
+});
+
+// Artist Radio sends get request to new artist id
+$('.artist_filter').on('click', function(e){
+    var artist_id = e.toElement.value
+    var url = "/artist/" + artist_id
+    window.location.assign(url); 
+})
+
+// Submit Genre
+$(".genre_filter").click(function() {
+  genre = $(this).attr('value')
+  $( "#genre_form" ).submit();
+});
+
+$("#genre_form").submit(function( event ) {
+    // event.preventDefault();
+});
+
+
+// Submit Collection
+$('.collection_filter').on('click', function(e){
+//$(".collection_filter").click(function() {
+  collection_id = $(this).attr('value')
+  $("#collection_form").submit();
+});
+
+$("#collection_form").submit(function( event ) {
+    //alert( "Handler for collection .submit() called." );
+    // event.preventDefault();
+});
+
+
+// Pictures  w Ready function
+//  Tricky bc images are dynamically created. Use Delegated Event
+// I don't need function(e)
+$(function() {
+  $("body").on("click", "img", function(){
+      // get thumb src
+      var src = $(this).attr('src')
+      // copy to picture src
+      $('#picture').attr('src', src)
+  })
+});
+
+
+// Tab
+// https://codepen.io/cssjockey/pen/jGzuK BUT using hide/show instead
+$('ul.art-tabs li').click(function(){
+    var tabid = $(this).attr('data-tab');
+
+    $('ul.art-tabs li').removeClass('is-active');
+    $('.tab-content').hide();
+
+    // Bulma enable clicked tab
+    $(this).addClass('is-active');
+    $("#"+tabid).show();
+})
+
+</script>
+
+  </body>
+</html>
+
