@@ -8,7 +8,7 @@ Art Gallery is a built-in sample with only two tables.
 One table has a list of artists, their biographies, several photos of their 
 work, and their genres. A second table groups the artists into collections of art movements.
 
-<img src="http://gobot.pythonanywhere.com/assets/img/artist_screenshot.jpg" width="500"
+<img src="https://philhardaker.com/assets/img/artist_screenshot.jpg" width="500"
 style="border: 1px solid grey; padding: 1px 2px 2px 1px;">
 
 ## Features
@@ -23,5 +23,5 @@ style="border: 1px solid grey; padding: 1px 2px 2px 1px;">
 ## Installation
 
 See installation and running notes at 
-[PhilHardaker.com](http://www.philhardaker.com/projects/airpress_gallery/)
+[PhilHardaker.com](https://www.philhardaker.com/projects/airpress_gallery/)
 
