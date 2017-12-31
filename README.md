@@ -23,5 +23,5 @@ style="border: 1px solid grey; padding: 1px 2px 2px 1px;">
 ## Installation
 
 See installation and running notes at 
-[PhilHardker.com](http://www.philhardaker.com/projects/airpress_gallery/)
+[PhilHardaker.com](http://www.philhardaker.com/projects/airpress_gallery/)
 
