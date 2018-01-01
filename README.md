@@ -8,7 +8,7 @@ Art Gallery is a built-in sample with only two tables.
 One table has a list of artists, their biographies, several photos of their 
 work, and their genres. A second table groups the artists into collections of art movements.
 
-[screenshot](app/assets/img/screenshot_800.jpg)
+![screenshot](app/assets/img/screenshot_800.jpg)
 
 ## Features
 
