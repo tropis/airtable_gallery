@@ -22,5 +22,5 @@ work, and their genres. A second table groups the artists into collections of ar
 ## Installation
 
 See installation and running notes at 
-[PhilHardaker.com](https://www.philhardaker.com/projects/airpress_gallery/)
+[PhilHardaker.com](https://www.philhardaker.com/projects/airtable_gallery/)
 
